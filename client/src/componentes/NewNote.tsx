@@ -20,7 +20,7 @@ const resolver: Resolver<FormValues> = async (values) => {
 };
 
 const NewNote = () => {
-  const { token, setNewNote } = useAppContext()
+  const { token, setNewNote, apiUrl } = useAppContext()
   const queryClient = useQueryClient()
   const mutation = useMutation(postNote, {
     onSuccess: () => {
@@ -42,7 +42,7 @@ const NewNote = () => {
   });
 
   async function postNote({ note }: { note: string | undefined }) {
-    return await fetch('http://127.0.0.1:5000/notes', {
+    return await fetch((apiUrl + '/notes'), {
       method: "POST",
       headers: {
         'x-access-token': token,

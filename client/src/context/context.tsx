@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode, Dispatch, SetStateAction } from "react";
 
 type AppContextType = {
+  apiUrl: string,
   token: string,
   setToken: Dispatch<SetStateAction<string>>,
   isLoding: boolean,
@@ -12,6 +13,7 @@ type AppContextType = {
 }
 
 const DefaultAppContextValues: AppContextType = {
+  apiUrl: import.meta.env.VITE_API_URL,
   token: "",
   setToken: useState<string>,
   isLoding: false,
@@ -25,6 +27,7 @@ const DefaultAppContextValues: AppContextType = {
 const AppContext = createContext<AppContextType>(DefaultAppContextValues);
 
 const AppContextProvider = ({ children }: { children: ReactNode }) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
   const [token, setToken] = useState<string>("");
   const [isLoding, setIsLoding] = useState<boolean>(false);
   const [newNote, setNewNote] = useState<boolean>(false);
@@ -36,6 +39,7 @@ const AppContextProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AppContext.Provider value={{
+      apiUrl,
       token,
       setToken,
       isLoding,

@@ -7,7 +7,7 @@ import Note from "./Note"
 import { useEffect } from "react"
 
 const Notes = () => {
-  const { token, newNote, setNewNote, openNote, setOpenNote, setIsLoding } = useAppContext()
+  const { token, newNote, setNewNote, openNote, setOpenNote, setIsLoding, apiUrl } = useAppContext()
   const query = useQuery('notes', getNotes)
   const queryClient = useQueryClient()
   const mutation = useMutation(deleteNote, {
@@ -21,7 +21,7 @@ const Notes = () => {
   }, [query.isLoading])
 
   function getNotes() {
-    return fetch('http://127.0.0.1:5000/notes', {
+    return fetch((apiUrl + '/notes'), {
       headers: {
         "x-access-token": token,
       },
@@ -36,7 +36,7 @@ const Notes = () => {
   }
 
   async function deleteNote(id: number) {
-    await fetch("http://127.0.0.1:5000/notes", {
+    await fetch((apiUrl + "/notes"), {
       method: "DELETE",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

@@ -4,7 +4,7 @@ This is a note app built with flask and react.
 
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/fL92vnQM/note-app.png)
+![App Screenshot](https://i.postimg.cc/BvLpm6WW/note-app.png)
 
 ## Feedback
 
@@ -54,6 +54,10 @@ Start the server
   yarn build
   yarn preview
 ```
+
+## Environment variables
+
+`VITE_API_URL`
 
 ## 🚀 About Me
 

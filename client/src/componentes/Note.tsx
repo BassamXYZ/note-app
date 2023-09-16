@@ -21,7 +21,7 @@ const resolver: Resolver<FormValues> = async (values) => {
 };
 
 const Note = ({ noteId }: { noteId: number }) => {
-  const { token, setOpenNote, setIsLoding } = useAppContext()
+  const { token, setOpenNote, apiUrl } = useAppContext()
   const queryClient = useQueryClient()
   const mutation = useMutation(patchNote, {
     onSuccess: () => {
@@ -51,7 +51,7 @@ const Note = ({ noteId }: { noteId: number }) => {
   });
 
   async function patchNote({ id, note }: { id: number | null, note: string }) {
-    return await fetch('http://127.0.0.1:5000/notes', {
+    return await fetch((apiUrl + '/notes'), {
       method: "PATCH",
       headers: {
         "x-access-token": token,
