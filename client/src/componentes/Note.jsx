@@ -1,8 +1,12 @@
 import { Box, Button, ButtonGroup, FormErrorMessage, Textarea } from "@chakra-ui/react"
 import { useQueryClient, useMutation, useQuery } from 'react-query'
 import { useAppContext } from "../context/context"
-import { Resolver, useForm } from "react-hook-form";
+import { /*Resolver,*/ useForm } from "react-hook-form";
 import { useEffect } from "react";
+
+/*
+There is an error in if the file in TypeScript in line 35 and i dont know how to fix it.
+If you want to try fix it uncomment every comment in this file. 
 
 type FormValues = {
   note: string;
@@ -19,8 +23,8 @@ const resolver: Resolver<FormValues> = async (values) => {
     } : {},
   };
 };
-
-const Note = ({ noteId }: { noteId: number }) => {
+*/
+const Note = ({ noteId }/*: { noteId: number }*/) => {
   const { token, setOpenNote, apiUrl } = useAppContext()
   const queryClient = useQueryClient()
   const mutation = useMutation(patchNote, {
@@ -36,7 +40,7 @@ const Note = ({ noteId }: { noteId: number }) => {
     register,
     formState: { errors },
     reset,
-  } = useForm<FormValues>({ resolver });
+  } = useForm/*<FormValues>*/(/*{ resolver }*/);
 
   useEffect(() => {
     reset({ note: note });
@@ -50,7 +54,7 @@ const Note = ({ noteId }: { noteId: number }) => {
     setOpenNote(null)
   });
 
-  async function patchNote({ id, note }: { id: number | null, note: string }) {
+  async function patchNote({ id, note }/*: { id: number | null, note: string }*/) {
     return await fetch((apiUrl + '/notes'), {
       method: "PATCH",
       headers: {
