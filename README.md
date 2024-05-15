@@ -2,10 +2,6 @@
 
 This is a note app built with flask and react.
 
-## Screenshots
-
-![App Screenshot](https://i.postimg.cc/BvLpm6WW/note-app.png)
-
 ## Feedback
 
 If you have any feedback, please reach out to us at <bassam.essam.ahmad@gmail.com>
