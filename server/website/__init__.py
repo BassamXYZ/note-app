@@ -13,11 +13,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'hdugf/,ifjthshtp\jfjfbnsjjf'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
-    CORS(app, resource={
-        r"/*": {
-            "origins": "*"
-        }
-    })
+    CORS(app, resources=r'/*',origins=["https://bassamnotes.netlify.app","*"], supports_credentials=True)
 
     from .notes import notes
     from .auth import auth
